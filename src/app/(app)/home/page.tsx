@@ -41,11 +41,7 @@ export default function HomePage() {
     return <div className="h-screen w-full bg-background" />;
   }
 
-  const mockUser: User = {
-    id: "1",
-    username: "Usuario Teste",
-    avatarUrl: "https://github.com/shadcn.png",
-  };
+
 
   return (
     <div
@@ -82,7 +78,7 @@ export default function HomePage() {
               "absolute z-50 transition-all duration-500 ease-in-out border-t shadow-none h-full",
               isFullyExpanded
                 ? "rounded-t-none border-t-0"
-                : "rounded-t-[32px] bg-background/95 backdrop-blur-md",
+                : "rounded-t-[32px]",
             )}
           >
             {/* Handle visual */}
@@ -127,14 +123,23 @@ export default function HomePage() {
                 </span>
 
                 <ReviewPost
-                  user={mockUser}
-                  content="Experiência incrível! O ambiente é super agradável e o prato principal estava impecável. Recomendo muito o risoto de cogumelos."
+                  review={{
+                    userId: "1",
+                    username: "Arthur Pimenta",
+                    content: "Experiência incrível! O ambiente é super agradável e o prato principal estava impecável. Recomendo muito o risoto de cogumelos.",
+                    rating: 5,
+                  }}
                 />
 
                 <ReviewPost
-                  user={mockUser}
-                  content="Experiência incrível! O ambiente é super agradável e o prato principal estava impecável. Recomendo muito o risoto de cogumelos."
+                  review={{
+                    userId: "2",
+                    username: "João Silva",
+                    content: "Muito bom o atendimento, voltarei com certeza!",
+                    rating: 4,
+                  }}
                 />
+
               </div>
             </section>
           </DrawerContent>

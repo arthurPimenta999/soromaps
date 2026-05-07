@@ -1,36 +1,46 @@
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import User from "@/types/user";
+import { Review } from "@/types/review";
 
 interface ReviewPostProps {
-  user: User;
-  content: string;
+  review: Review;
 }
 
-export default function ReviewPost({ user, content }: ReviewPostProps) {
+export default function ReviewPost({ review }: ReviewPostProps) {
+  // Simples formatação de data se o createdAt existir
+  const dateLabel = review.createdAt 
+    ? new Date(review.createdAt.seconds * 1000).toLocaleDateString()
+    : "Agora mesmo";
+
   return (
     <Card className="shadow-none flex flex-col gap-3">
       <CardHeader>
         <div className="flex items-center gap-2">
           <Avatar>
-            <AvatarFallback />
+            <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${review.username}`} />
+            <AvatarFallback>{review.username[0]}</AvatarFallback>
           </Avatar>
 
           <div className="flex flex-col">
-            <span className="font-medium">Usuario Teste</span>
+            <span className="font-medium">{review.username}</span>
             <span className="text-xs text-muted-foreground">
-              Avaliou Gularica • Há 2 horas
+              Avaliou • {dateLabel}
             </span>
+          </div>
+          
+          <div className="ml-auto flex items-center gap-1">
+             <span className="text-sm font-semibold">{review.rating}</span>
+             <span className="text-yellow-500">★</span>
           </div>
         </div>
       </CardHeader>
 
       <CardContent>
-        <p>
-          Experiência incrível! O ambiente é super agradável e o prato principal
-          estava impecável. Recomendo muito o risoto de cogumelos.
+        <p className="text-sm text-foreground/90 leading-relaxed">
+          {review.content}
         </p>
       </CardContent>
     </Card>
   );
 }
+
