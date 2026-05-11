@@ -9,7 +9,7 @@ export default function Page() {
 
     async function buscarDados() {
         try {
-            const response = await fetch("http://localhost:5068/api/markers")
+            const response = await fetch("http://localhost:5068/api/users")
 
             const data = await response.json()
 

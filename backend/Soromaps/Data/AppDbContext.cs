@@ -11,5 +11,6 @@ namespace Soromaps.Data
         }
 
         public DbSet<Marker> Markers { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
