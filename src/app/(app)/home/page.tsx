@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Map as MapComponent, MapControls } from "@/components/ui/map";
 import {
   Drawer,
@@ -12,9 +11,7 @@ import {
 import { cn } from "@/lib/utils";
 import { BookImageIcon, Map as MapIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import ReviewPost from "./_components/review-post";
-import User from "@/types/user";
 
 export default function HomePage() {
   const [mounted, setMounted] = useState(false);
@@ -40,8 +37,6 @@ export default function HomePage() {
   if (!mounted) {
     return <div className="h-screen w-full bg-background" />;
   }
-
-
 
   return (
     <div
@@ -126,7 +121,8 @@ export default function HomePage() {
                   review={{
                     userId: "1",
                     username: "Arthur Pimenta",
-                    content: "Experiência incrível! O ambiente é super agradável e o prato principal estava impecável. Recomendo muito o risoto de cogumelos.",
+                    content:
+                      "Experiência incrível! O ambiente é super agradável e o prato principal estava impecável. Recomendo muito o risoto de cogumelos.",
                     rating: 5,
                   }}
                 />
@@ -139,7 +135,6 @@ export default function HomePage() {
                     rating: 4,
                   }}
                 />
-
               </div>
             </section>
           </DrawerContent>

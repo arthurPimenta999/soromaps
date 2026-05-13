@@ -65,7 +65,7 @@ export function AppSidebar() {
                   icon={<MapIcon size={16} />}
                 />
                 <RouteButton
-                  url="/lugares"
+                  url="/places"
                   name="Explorar Lugares"
                   icon={<Search size={16} />}
                 />
@@ -76,12 +76,12 @@ export function AppSidebar() {
               <SidebarGroupLabel>Gestão</SidebarGroupLabel>
               <SidebarGroupContent className="flex flex-col gap-0">
                 <RouteButton
-                  url="/admin/comercios"
+                  url="/admin/businesses"
                   name="Gerenciar Comércios"
                   icon={<Store size={16} />}
                 />
                 <RouteButton
-                  url="/admin/usuarios"
+                  url="/admin/users"
                   name="Usuários"
                   icon={<Users size={16} />}
                 />
@@ -97,7 +97,7 @@ export function AppSidebar() {
               <SidebarGroupLabel>Sistema</SidebarGroupLabel>
               <SidebarGroupContent className="flex flex-col gap-0">
                 <RouteButton
-                  url="/perfil"
+                  url="/profile"
                   name="Meu Perfil"
                   icon={<UserCircle size={16} />}
                 />
