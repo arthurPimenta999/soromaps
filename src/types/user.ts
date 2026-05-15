@@ -3,6 +3,8 @@
  */
 export default interface User {
   id: string;
-  username: string;
-  avatarUrl?: string;
+  userName: string;
+  password: string;
+  created_at: Date;
+  updated_at: Date;
 }

@@ -1,6 +1,6 @@
 ## Getting Started
 
-Pra clonar o repo:
+Pra clonar o repo & rodar tudo:
 
 ```bash
 git clone https://github.com/ArthurPimentaFatec/soromaps.git
@@ -12,6 +12,11 @@ code .
 npm run dev
 ```
 
-## Dependencias
+```bash
+# pra rodar o backend entra na pasta do backend
+cd src/services/soromaps
+# starta o backend
+dotnet run
+```
 
-Usando **Next.js** e **Shadcn** pra componentess
+## Dependencias
