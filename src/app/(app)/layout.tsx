@@ -1,5 +1,6 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/blocks/app-sidebar";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -14,6 +15,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         {/* Conteúdo da página */}
         <div className="flex-1">{children}</div>
       </main>
+
+      <Toaster position="bottom-right" richColors duration={5000} closeButton />
     </SidebarProvider>
   );
 }

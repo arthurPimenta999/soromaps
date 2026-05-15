@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Soromaps")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+39896ea504325b6db95307bfbdbf4b720c6b1d5d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+101b706900aa79417f3bbd67e0978f6fca39179b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Soromaps")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Soromaps")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
