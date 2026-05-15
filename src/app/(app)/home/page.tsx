@@ -1,7 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Map as MapComponent, MapControls } from "@/components/ui/map";
+import { 
+  Map as MapComponent, 
+  MapControls, 
+  MapMarker,      // Adicionado
+  MarkerContent,  // Adicionado
+  MarkerPopup,    // Adicionado
+  MarkerTooltip   // Adicionado
+} from "@/components/ui/map";
 import {
   Drawer,
   DrawerContent,
@@ -12,6 +19,13 @@ import { cn } from "@/lib/utils";
 import { BookImageIcon, Map as MapIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ReviewPost from "./_components/review-post";
+
+interface  Location{
+  id: number;
+  nome: string;
+  lat: number;
+  lng: number;
+}
 
 export default function HomePage() {
   const [mounted, setMounted] = useState(false);
@@ -27,9 +41,19 @@ export default function HomePage() {
     bearing: 0,
     pitch: 0,
   });
+  const [locations, setLocations] = useState<Location[]>([]);
 
   useEffect(() => {
+    
     setMounted(true);
+    fetch("http://localhost:5068/api/markers/4")
+    .then((response) => response.json())
+    .then((dados) => { // O nome "dados" nasce aqui dentro
+      // Se a API retorna um objeto único, coloque entre [ ]
+      // Se já retorna um array, use apenas setLocations(dados)
+      setLocations(Array.isArray(dados) ? dados : [dados]);
+    })
+    .catch((error) => console.error("Erro ao buscar locais:", error));
   }, []);
 
   const isFullyExpanded = snap === 1;
@@ -53,6 +77,44 @@ export default function HomePage() {
         {!isFullyExpanded && (
           <MapComponent viewport={viewport} onViewportChange={setViewport}>
             <MapControls position="top-right" />
+            {/* 1. CAMADA DO MAPA */}
+<div
+  className={cn(
+    "absolute inset-0 z-0 transition-opacity duration-500",
+    isFullyExpanded ? "opacity-0 pointer-events-none" : "opacity-100",
+  )}
+>
+  {!isFullyExpanded && (
+    <MapComponent viewport={viewport} onViewportChange={setViewport}>
+      <MapControls position="top-right" />
+
+      {/* --- ADICIONE OS MARKERS AQUI --- */}
+      {locations.map((location) => (
+        <MapMarker
+          key={location.id}
+          longitude={location.lng}
+          latitude={location.lat}
+        >
+          <MarkerContent>
+            {/* O "pinguinho" no mapa */}
+            <div className="bg-primary size-4 rounded-full border-2 border-white shadow-lg cursor-pointer" />
+          </MarkerContent>
+          
+          <MarkerTooltip>{location.nome}</MarkerTooltip>
+
+          <MarkerPopup>
+            <div className="p-1">
+              <p className="text-sm font-bold">{location.nome}</p>
+              <p className="text-xs text-muted-foreground">Ponto de interesse</p>
+            </div>
+          </MarkerPopup>
+        </MapMarker>
+      ))}
+      {/* -------------------------------- */}
+
+    </MapComponent>
+  )}
+</div>
           </MapComponent>
         )}
       </div>
