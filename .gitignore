@@ -40,6 +40,14 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-#dotnet
+# dotnet
 soromaps/src/services/Soromaps/bin/
 soromaps/src/services/Soromaps/obj/
+soromaps/src/services/.vs/
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.env
+
